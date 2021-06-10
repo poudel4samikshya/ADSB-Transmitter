@@ -449,6 +449,7 @@ void  interactiveRemoveStaleAircrafts(void);
 int   decodeBinMessage   (struct client *c, char *p);
 struct aircraft *interactiveFindAircraft(uint32_t addr);
 struct stDF     *interactiveFindDF      (uint32_t addr);
+void aircraft_counter(void);
 
 //
 // Functions exported from net_io.c
