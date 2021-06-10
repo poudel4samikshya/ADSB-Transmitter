@@ -29,6 +29,7 @@
 //
 #include "coaa.h"
 #include "dump1090.h"
+#include <math.h>
 //
 // ============================= Utility functions ==========================
 //
@@ -902,3 +903,72 @@ int main(int argc, char **argv) {
 //
 //=========================================================================
 //
+
+
+void aircraft_counter(void){
+
+    struct aircraft *current_aircraft = Modes.aircrafts;
+    // loop through the aircraft linked list
+    while(1){
+        int previous_altitude = 0;
+//        struct LinkedList_taking_off_aircraft{ int data;
+//                                    struct LinkedList_taking_off_aircraft *next; };
+//
+//        struct LinkedList_landing_aircraft{ int data;
+//                                            struct LinkedList_landing_aircraft *next; };
+//
+//        struct LinkedList_overflight_aircraft{ int data;
+//                                                 struct LinkedList_overflight_aircraft *next; };
+
+        // checking each aircraft
+        while(current_aircraft != NULL)
+        {
+            int current_altitude = current_aircraft->altitude;
+
+
+            //Take-offs
+            //checking altitude range in order to see if it is taking off
+            if (current_altitude>=AUBURN_ALTITUDE - 50 && current_altitude<=AUBURN_ALTITUDE + 50) {
+
+                if()
+
+
+            }
+                // checking for takeoff
+                // if (current_altitude>previous_altitude)
+                     previous_altitude = altitude;
+
+                 //incrementing next node in the linked list
+                 current_aircraft = current_aircraft->next;
+
+        }
+
+
+    }
+}
+
+/*
+ * This function finds distance from auburn airport to any given location. (lat,lon) co-ordinates
+ */
+double lat_lon_distance(double lat, double lon)
+{
+    // distance between latitudes
+    // and longitudes
+    double dLat = (lat - AUBURN_AIRPORT_LAT) *
+                  M_PI / 180.0;
+    double dLon = (lon - AUBURN_AIRPORT_LON) *
+                  M_PI / 180.0;
+
+    // convert to radians
+    double auburn_airport_lat = (AUBURN_AIRPORT_LAT) * M_PI / 180.0;
+    lat = (lat) * M_PI / 180.0;
+
+    // apply formulae
+    double a = pow(sin(dLat / 2), 2) +
+               pow(sin(dLon / 2), 2) *
+               cos(auburn_airport_lat) * cos(lat);
+    double rad = 6371;
+    double c = 2 * asin(sqrt(a));
+    return rad * c;
+
+}

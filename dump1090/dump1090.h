@@ -183,6 +183,10 @@
 #endif
 
 #define MODES_NOTUSED(V) ((void) V)
+#define AUBURN_ALTITUDE       777 // Auburn Airport's altitude in feet
+#define AUBURN_AIRPORT_LAT    32.615357 // Auburn Airport's latitude
+#define AUBURN_AIRPORT_LON   -85.432752 // Auburn Airport's longitude
+
 
 //======================== structure declarations =========================
 
@@ -325,7 +329,7 @@ struct {                             // Internal state
     int    bUserFlags;              // Flags relating to the user details
 
     // Interactive mode
-    struct aircraft *aircrafts;
+    struct aircraft *aircrafts; //head of the linked list
     uint64_t         interactive_last_update; // Last screen update in milliseconds
     time_t           last_cleanup_time;       // Last cleanup time in seconds
 
@@ -450,6 +454,7 @@ int   decodeBinMessage   (struct client *c, char *p);
 struct aircraft *interactiveFindAircraft(uint32_t addr);
 struct stDF     *interactiveFindDF      (uint32_t addr);
 void aircraft_counter(void);
+double lat_lon_distance(double lat, double lon);
 
 //
 // Functions exported from net_io.c
