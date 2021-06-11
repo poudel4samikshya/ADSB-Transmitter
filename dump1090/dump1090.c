@@ -29,7 +29,6 @@
 //
 #include "coaa.h"
 #include "dump1090.h"
-#include <math.h>
 //
 // ============================= Utility functions ==========================
 //
@@ -902,13 +901,14 @@ int main(int argc, char **argv) {
 }
 //
 //=========================================================================
-//
+//Functions define by us are below
 
 
 void aircraft_counter(void){
 
-    struct aircraft *current_aircraft = Modes.aircrafts;
-    // loop through the aircraft linked list
+    struct aircraft *current_aircraft = Modes.aircrafts; //set to begining of linked list
+    
+    //loop through the aircraft linked list
     while(1){
         int previous_altitude = 0;
 //        struct LinkedList_taking_off_aircraft{ int data;
@@ -920,35 +920,44 @@ void aircraft_counter(void){
 //        struct LinkedList_overflight_aircraft{ int data;
 //                                                 struct LinkedList_overflight_aircraft *next; };
 
-        // checking each aircraft
-        while(current_aircraft != NULL)
-        {
+        // checking each aircraft in linked list
+        while(current_aircraft != NULL){
             int current_altitude = current_aircraft->altitude;
 
+            //Perform checks
+            //Take off? 
+            if(current_altitude>=AUBURN_ALTITUDE - 50 && current_altitude<=AUBURN_ALTITUDE + 50) {
+                
+                //taking off?
+                if(current_altitude>previous_altitude){
+                    // previous_altitude = altitude;
+                //landing?
+                }else if(){
 
-            //Take-offs
-            //checking altitude range in order to see if it is taking off
-            if (current_altitude>=AUBURN_ALTITUDE - 50 && current_altitude<=AUBURN_ALTITUDE + 50) {
+                //neither
+                }else{
 
-                if()
-
-
+                }
+    
+    
             }
-                // checking for takeoff
-                // if (current_altitude>previous_altitude)
-                     previous_altitude = altitude;
+      
+       
 
-                 //incrementing next node in the linked list
-                 current_aircraft = current_aircraft->next;
-
+            // incrementing next node in the linked list
+            current_aircraft = current_aircraft->next;
         }
+        current_aircraft = Modes.aircrafts; //reset to head of list
 
 
     }
 }
 
-/*
- * This function finds distance from auburn airport to any given location. (lat,lon) co-ordinates
+/*Description: returns the distance from auburn airport
+ *Parameters: the latitude and longitude of the some location in question
+ *Output: none
+ *Returns: distance in km of some given location from auburn airport
+ *note: This code is contributed by Mahadev(geeksforgeeks.org)
  */
 double lat_lon_distance(double lat, double lon)
 {
