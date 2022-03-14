@@ -1,5 +1,5 @@
 
-# UAV - REU 
+# UAV - Research For Undergraduates (REU)
 
 
 # UAV project summer21 - Internship at Auburn university
