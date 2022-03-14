@@ -1,6 +1,6 @@
 # uav-reu
 
-# our UAV project summer21
+# UAV project summer21
 
 In this project, . 
 1) worked on smart Unmanned Aerial Vehicles (UAVs)  to build the Automatic Dependence Surveillance- Broadcast (ADS-B) receiver hardware from scratch using Raspberry pi.
